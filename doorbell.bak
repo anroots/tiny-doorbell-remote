@@ -1,0 +1,68 @@
+
+
+#define TX_PIN 9
+#define BIT_PERIOD 700
+#define TIMES 27
+#define PAUSE 30
+
+
+#define LONG_UP 730
+#define SHORT_UP 350
+#define SHORT_DOWN 250
+#define LONG_DOWN 550
+
+//0111010011100
+
+unsigned int times[TIMES] = {
+  SHORT_UP, SHORT_DOWN, LONG_UP, SHORT_DOWN, LONG_UP, SHORT_DOWN, LONG_UP, LONG_DOWN, SHORT_UP, SHORT_DOWN, LONG_UP, LONG_DOWN, SHORT_UP, LONG_DOWN,
+  SHORT_UP, SHORT_DOWN, LONG_UP, SHORT_DOWN, LONG_UP, SHORT_DOWN, LONG_UP, LONG_DOWN, SHORT_UP, LONG_DOWN, SHORT_UP, LONG_DOWN, SHORT_UP
+
+};
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(TX_PIN, OUTPUT);
+  Serial.println("Init");
+}
+
+void ring_bell()
+{
+  // The actual doorbell sends our signal 12 times, so we'll emulate it
+  for (int j = 0; j < 98; j++)
+  {
+    single_ring();
+    delayMicroseconds(5000);
+  }
+}
+
+void single_ring()
+{
+
+  boolean previous = false;
+
+  for (int i = 0; i < TIMES - 1; i++)
+  {
+
+    if (previous) {
+      //Serial.println("LOW");
+      digitalWrite(TX_PIN, LOW);
+    } else {
+      //Serial.println("HIGH");
+      digitalWrite(TX_PIN, HIGH);
+    }
+    previous = !previous;
+    delayMicroseconds(times[i]);
+  }
+
+  digitalWrite(TX_PIN, LOW);
+}
+
+
+void loop()
+{
+  delay(1000);
+  ring_bell();
+  delay(100000);
+
+}
+
