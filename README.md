@@ -1,6 +1,8 @@
 # Tiny Doorbell Remote
 
-Attiny powered RF remote for a wireless doorbell
+Attiny powered RF remote for a wireless doorbell.
+
+![PCB module](img/module_front2.jpg)
 
 ## Hardware
 
@@ -15,9 +17,13 @@ The circuit runs on a single 3V battery and consumes
 - 65 μA while on standby mode
 - 7.5mA while transmitting
 
+Estimated battery lifetime: at least 60 days.
+
 ## Signal
 
-The decoded signal for my doorbell was `0000111010011100` (or `0E9C` in hex). The original and replicated signal recordings are in the [signal-recordings](signal-recordings) folder. Open them with Audacity.
+![Signal comparison: original doorbell remote vs replicated signal](img/signal_comparison.png)
+
+The decoded signal for my doorbell was `0000111010011100` (or `0E9C` in hex). The original and replicated signal recordings are in the [signal-recordings](signal-recordings) folder. Open them with [Audacity](http://audacityteam.org).
 
 ## API
 
