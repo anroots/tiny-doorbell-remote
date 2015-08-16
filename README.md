@@ -1,6 +1,6 @@
 # Tiny Doorbell Remote
 
-Attiny powered RF remote for a wireless doorbell.
+These are the project files (hardware schematic and Arduino firmware code) for a small remote-control module that acts as an auxiliary remote to a wireless doorbell.
 
 ![PCB module](img/module_front2.jpg)
 
